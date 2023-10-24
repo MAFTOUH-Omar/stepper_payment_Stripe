@@ -12,31 +12,7 @@ const Stepper = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [complete, setComplete] = useState(false);
 
-  const handleStepOperation = () => {
-    switch (currentStep) {
-      case 1:
-        // Opération spécifique à l'étape "Device Type"
-        // Exécutez votre code ici
-        break;
-      case 2:
-        // Opération spécifique à l'étape "Live Bouquets"
-        // Exécutez votre code ici
-        break;
-      case 3:
-        // Opération spécifique à l'étape "Payment Method"
-        // Exécutez votre code ici
-        break;
-      case 4:
-        // Opération spécifique à l'étape "Finish"
-        // Exécutez votre code ici
-        break;
-      default:
-        break;
-    }
-  };
-
   const handleNext = () => {
-    handleStepOperation();
     if (currentStep === steps.length) {
       setComplete(true);
     } else {
@@ -61,15 +37,6 @@ const Stepper = () => {
           </div>
         ))}
       </div>
-      {!complete && (
-        <button
-          className="bg-lime-500 rounded-lg px-6 py-2 text-white"
-          onClick={handleNext}
-        >
-          {currentStep === steps.length ? "Finish" : "Next"}
-        </button>
-      )}
-
       {currentStep === 1 && (
         <div className="mt-5">
           <DeviceType />
@@ -89,6 +56,14 @@ const Stepper = () => {
         <div className="mt-5">
           <Finish />
         </div>
+      )}
+      {!complete && (
+        <button
+          className="bg-lime-500 rounded-lg px-6 py-2 text-white"
+          onClick={handleNext}
+        >
+          {currentStep === steps.length ? "Finish" : "Next"}
+        </button>
       )}
     </>
   );
